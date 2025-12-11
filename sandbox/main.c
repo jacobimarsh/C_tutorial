@@ -1,34 +1,45 @@
 #include <stdio.h>
+#include <stdbool.h>
 
 int main() {
 
-    // Test comment 
-    /* Test comment 2
-    Test comment 3!
-    */
+    char grade = 'A';
+    char symbol = '#';
+    char currency[] = "AUD";
+    char email[] = "test@example.com";
 
-    int age = 88; 
-    int year = 2025;
-    int quantity = 5;
+    printf("Your grade is %c\n", grade);
+    printf("Your fav symbol is %c\n", symbol);
+    printf("The currency is %s\n", currency);
+    printf("Your email is %s\n", email);
+
+    // Bools
+
+    bool isOnline = true;
+
+    printf("Are you online? %d\n", isOnline);
+
+    if(isOnline) {
+        printf("You are online\n");
+    } else {
+        printf("You are offline\n");
+    }
+
+    bool isForSale = 0;
+    if(isForSale) {
+        printf("This item is for sale\n");
+    } else {
+        printf("This item is not for sale\n");
+    }
+
+    // variable = A reusable container for a value.
+    //      Behaves as if it were the value it contains.
+    // int = whole numbers (4 bytes in modern systems)
+    // float = single-precision decimal number (4 bytes)
+    // double = double-precision decimal number (8 bytes)
+    // char = single character (1 byte)
+    // char[] = array of characters (size varies)
+    // bool = true or false (1 byte, requires fstdbool.h>)
     
-    printf("You are %d years old\n", age);
-    printf("You are %d years old in the year %d\n", age, year);
-    printf("You ordered %d items\n", quantity - 1);
-
-    float gpa = 5;
-    
-    printf("Your GPA is %.2f\n", gpa);
-
-    float price = 19.99;
-    printf("The price is $%.0f\n", price);
-
-    float temperature = 25.7;
-    printf("The temperature is %.1f degrees\n", temperature);
-
-    double pi = 3.14159;
-    double e = 2.71828;
-    printf("The value of pi is %.10lf\n", pi);
-    printf("The value of e is %.10lf\n", e);
-
     return 0;
 }
