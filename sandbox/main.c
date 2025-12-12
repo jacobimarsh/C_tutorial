@@ -1,27 +1,52 @@
 #include <stdio.h>
 #include <stdbool.h>
+#include <string.h>
 
 int main() {
 
-    int age = 25;
-    float price = 19.99;
-    double pi = 3.1415926535;
-    char currency = '$';
-    char name[] = "Jako";
+    int x = 2;
+    int y = 3;
+    int z = 0;
+
+    printf("%d\n", x + y + z);
+    printf("%d\n", x - y - z);
+    printf("%d\n", x * y * z);
+    printf("%d\n", x / y);
+    printf("%d\n", x % y);
+    
+    printf("%d\n", x++);
+    x+=2;
+    printf("%d\n", x);
+
+    x = x/2;
+    printf("%d\n\n\n\n", x);
+
+// Examples
+
+    int age = 0;
+    float gpa = 0.0f;
+    char grade = '\0';
+    char name[30] = "";
+
+    printf("Enter your age: ");
+    scanf("%d", &age);
+
+    printf("Enter your gpa: ");
+    scanf("%f", &gpa);
+
+    printf("Enter your grade: ");
+    scanf(" %c", &grade);
+
+    getchar();
+    printf("Enter your name: ");
+    fgets(name, sizeof(name), stdin);
+    name[strlen(name) - 1] = '\0';
+    
 
     printf("%d\n", age);
-    printf("%f\n", price);
-    printf("%lf\n", pi);
-    printf("%c\n", currency);
+    printf("%f\n", gpa);
+    printf("%c\n", grade);
     printf("%s\n", name);
-
-    float price1 = 19.99;
-    float price2 = 1.50;
-    float price3 = -100.00;
-
-    printf("%+7.1f\n", price1);
-    printf("%.2f\n", price2);
-    printf("%.3f\n", price3);
 
     return 0;
 }
