@@ -1,29 +1,39 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <string.h>
+#include <math.h>
 
 int main() {
 
-    char item[50] = "";
-    float price = 0.0f;
-    int quantity = 0;
-    char currency = '$';
-    float total = 0.0f;
+    float x = 3;
 
-    printf( "What item would you like to buy?: ");
-    fgets(item, sizeof(item), stdin);
-    item[strlen(item) - 1] = '\0';
-    
-    printf("What is the price for each?: ");
-    scanf("%f", &price);
+    //x = sqrt (x);
+    //x = pow(x, 4) ;
+    //x = round (x) ;
+    //x = ceil(x);
+    //x = floor(x);
+    // x = abs(x);
+    // x = log(x);
+    x = sin(x);
 
-    printf("How many would you like?: ");
-    scanf("%d", &quantity);
+    // printf ("%f\n", x);
 
-    total = price * quantity;
-    printf("--------------------------------\n");
-    printf("You have bought %d %s/s\n", quantity, item);
-    printf("Total: %c %.2f \n", currency,total);
+    double radius = 0.0;
+    double area = 0.0;
+    const double PI = 3.14159;
+    double surfaceArea = 0.0;
+    double volume = 0.0;
+
+    printf("Enter the radius: ");
+    scanf ("%lf", &radius);
+
+    area = PI * pow(radius, 2);
+    surfaceArea = 4 * PI * pow(radius, 2);
+    volume = 4/3 * PI * pow(radius, 3);
+
+    printf("The area of the circle is %lf\n", area);
+    printf("The surface area of the sphere is %lf\n", surfaceArea);
+    printf("The volume of the sphere is %lf\n", volume);
 
     return 0;
 }
