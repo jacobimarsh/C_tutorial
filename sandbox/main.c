@@ -4,49 +4,26 @@
 
 int main() {
 
-    int x = 2;
-    int y = 3;
-    int z = 0;
+    char item[50] = "";
+    float price = 0.0f;
+    int quantity = 0;
+    char currency = '$';
+    float total = 0.0f;
 
-    printf("%d\n", x + y + z);
-    printf("%d\n", x - y - z);
-    printf("%d\n", x * y * z);
-    printf("%d\n", x / y);
-    printf("%d\n", x % y);
+    printf( "What item would you like to buy?: ");
+    fgets(item, sizeof(item), stdin);
+    item[strlen(item) - 1] = '\0';
     
-    printf("%d\n", x++);
-    x+=2;
-    printf("%d\n", x);
+    printf("What is the price for each?: ");
+    scanf("%f", &price);
 
-    x = x/2;
-    printf("%d\n\n\n\n", x);
+    printf("How many would you like?: ");
+    scanf("%d", &quantity);
 
-// Examples
-
-    int age = 0;
-    float gpa = 0.0f;
-    char grade = '\0';
-    char name[30] = "";
-
-    printf("Enter your age: ");
-    scanf("%d", &age);
-
-    printf("Enter your gpa: ");
-    scanf("%f", &gpa);
-
-    printf("Enter your grade: ");
-    scanf(" %c", &grade);
-
-    getchar();
-    printf("Enter your name: ");
-    fgets(name, sizeof(name), stdin);
-    name[strlen(name) - 1] = '\0';
-    
-
-    printf("%d\n", age);
-    printf("%f\n", gpa);
-    printf("%c\n", grade);
-    printf("%s\n", name);
+    total = price * quantity;
+    printf("--------------------------------\n");
+    printf("You have bought %d %s/s\n", quantity, item);
+    printf("Total: %c %.2f \n", currency,total);
 
     return 0;
 }
