@@ -1,42 +1,32 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 int main() {
 
+    int number = 0;
+    printf("Enter the number of grades: ");
+    scanf("%d", &number);
 
-    // Write a file
+    char *grades = malloc(number * sizeof(char)); 
 
-    FILE *pFile = fopen("output.txt", "w");
-
-    if (pFile == NULL) {
-        printf("Error opening file\n");
-        return 1;
-    }
-    
-    char text[] = "Charon\n       Typewritin\n";
-
-    fprintf(pFile, "%s", text);
-
-    printf("Wrote to file successfully\n");
-
-    fclose(pFile);
-    
-    
-    // Read from file
-
-    char buffer[1024] = {0};
-    
-    FILE *pFileRead = fopen("output.txt", "r");
-
-    if (pFileRead == NULL) {
-        printf("Error opening file\n");
+    if (grades == NULL) {
+        printf("Error allocating memory\n");
         return 1;
     }
 
-    while(fgets(buffer, sizeof(buffer), pFileRead) != NULL){
-        printf("%s", buffer);
+    for(int i = 0; i < number; i++) {
+        printf("Enter the grade #%d:", i + 1);
+        scanf(" %c", &grades[i]);
     }
 
-    fclose(pFileRead);
+    for(int i = 0; i < number; i++) {
+        printf("%c ", grades[i]);
+    }
 
+    printf("\n");
+
+    free(grades);
+    grades = NULL;
+    
     return 0;
 }
