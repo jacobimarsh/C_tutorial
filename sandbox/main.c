@@ -5,32 +5,47 @@
 int main() {
 
     int number = 0;
-    int sum = 0;
-    printf("Enter the number of players: ");
+    printf("Enter the number of prices: ");
     scanf("%d", &number);
+    
+    float *prices = malloc(number * sizeof(float));
 
-    int *scores = calloc(number, sizeof(int));
-
-    if(scores == NULL) {
+    if(prices == NULL) {
         printf("Error allocating memory\n");
         return 1;
     }
 
     for(int i = 0; i < number; i++) {
-        printf("Enter the score #%d: ", i + 1);
-        scanf("%d", &scores[i]);
+        printf("Enter the price #%d: ", i + 1);
+        scanf("%f", &prices[i]);
     }
 
-    for(int i = 0; i < number; i++) {
-        printf("%d ", scores[i]);
-        sum += scores[i];
-        // scanf("%d", &scores[i]);
+    int newNumber = 0;
+    printf("Enter the new number of prices: ");
+    scanf("%d", &newNumber);
+
+    float *temp = realloc(prices, newNumber * sizeof(float));
+
+    if(temp == NULL) {
+        printf("Error allocating memory\n");
+        return 1;
+    } else {
+        prices = temp;
+        temp = NULL;
+
+        for(int i = number; i < newNumber; i++) {
+            printf("Enter the price #%d: ", i + 1);
+            scanf("%f", &prices[i]);
+        }
+
+        for(int i = 0; i < newNumber; i++) {
+            printf("Prices ($): %.2f ", prices[i]);
+        }
+
     }
 
-    printf("Sum: %d\n", sum);
-
-    free(scores);
-    scores = NULL;
+    free(prices);
+    prices = NULL;
 
     return 0;
 }
