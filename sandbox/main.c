@@ -1,32 +1,36 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+
 int main() {
 
     int number = 0;
-    printf("Enter the number of grades: ");
+    int sum = 0;
+    printf("Enter the number of players: ");
     scanf("%d", &number);
 
-    char *grades = malloc(number * sizeof(char)); 
+    int *scores = calloc(number, sizeof(int));
 
-    if (grades == NULL) {
+    if(scores == NULL) {
         printf("Error allocating memory\n");
         return 1;
     }
 
     for(int i = 0; i < number; i++) {
-        printf("Enter the grade #%d:", i + 1);
-        scanf(" %c", &grades[i]);
+        printf("Enter the score #%d: ", i + 1);
+        scanf("%d", &scores[i]);
     }
 
     for(int i = 0; i < number; i++) {
-        printf("%c ", grades[i]);
+        printf("%d ", scores[i]);
+        sum += scores[i];
+        // scanf("%d", &scores[i]);
     }
 
-    printf("\n");
+    printf("Sum: %d\n", sum);
 
-    free(grades);
-    grades = NULL;
-    
+    free(scores);
+    scores = NULL;
+
     return 0;
 }
