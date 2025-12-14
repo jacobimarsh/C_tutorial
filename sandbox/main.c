@@ -1,39 +1,42 @@
 #include <stdio.h>
-#include <stdbool.h>
-#include <string.h>
-#include <math.h>
 
 int main() {
 
-    float x = 3;
 
-    //x = sqrt (x);
-    //x = pow(x, 4) ;
-    //x = round (x) ;
-    //x = ceil(x);
-    //x = floor(x);
-    // x = abs(x);
-    // x = log(x);
-    x = sin(x);
+    // Write a file
 
-    // printf ("%f\n", x);
+    FILE *pFile = fopen("output.txt", "w");
 
-    double radius = 0.0;
-    double area = 0.0;
-    const double PI = 3.14159;
-    double surfaceArea = 0.0;
-    double volume = 0.0;
+    if (pFile == NULL) {
+        printf("Error opening file\n");
+        return 1;
+    }
+    
+    char text[] = "Charon\n       Typewritin\n";
 
-    printf("Enter the radius: ");
-    scanf ("%lf", &radius);
+    fprintf(pFile, "%s", text);
 
-    area = PI * pow(radius, 2);
-    surfaceArea = 4 * PI * pow(radius, 2);
-    volume = 4/3 * PI * pow(radius, 3);
+    printf("Wrote to file successfully\n");
 
-    printf("The area of the circle is %lf\n", area);
-    printf("The surface area of the sphere is %lf\n", surfaceArea);
-    printf("The volume of the sphere is %lf\n", volume);
+    fclose(pFile);
+    
+    
+    // Read from file
+
+    char buffer[1024] = {0};
+    
+    FILE *pFileRead = fopen("output.txt", "r");
+
+    if (pFileRead == NULL) {
+        printf("Error opening file\n");
+        return 1;
+    }
+
+    while(fgets(buffer, sizeof(buffer), pFileRead) != NULL){
+        printf("%s", buffer);
+    }
+
+    fclose(pFileRead);
 
     return 0;
 }
